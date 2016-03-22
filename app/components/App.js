@@ -1,8 +1,19 @@
-import React from 'react';
-import Note from './Note.js';
+import React, { Component } from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-export default class App extends React.Component {
+// reducer
+import myApp from '../reducers/myApp.js';
+
+// react components
+import ShowNote from '../containers/ShowNote.js';
+
+export default class App extends Component {
   render() {
-    return <Note />
+    return (
+      <Provider store={createStore(myApp)}>
+        <ShowNote />
+      </Provider>
+    )
   }
 }
