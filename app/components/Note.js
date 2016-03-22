@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Note = ({ state, onClick }) => {
+const Note = ({ count, onClick }) => {
   return (
     <h1 onClick={(e) =>{
       onClick();
     }}>
-      Ready for start to apply react, redux using webpack { state.count }
+      Ready for start to apply react, redux using webpack { count }
     </h1>
   );
 }
