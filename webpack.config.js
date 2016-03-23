@@ -19,8 +19,8 @@ const common = {
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
+        test: /\.scss$/,
+        loader: 'style!css?sourceMap&modules!postcss!sass?sourceMap',
         include: PATHS.app
       },
       {
