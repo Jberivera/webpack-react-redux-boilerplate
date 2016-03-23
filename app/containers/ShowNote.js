@@ -1,4 +1,4 @@
-import Note from '../components/Note.js';
+import { Note } from '../components';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
-      dispatch({ type: 'INCREMENT' })
+      dispatch({ type: 'INCREMENT' });
     }
   };
 };
