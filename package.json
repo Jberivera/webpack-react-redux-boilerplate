@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel/register --recursive",
+    "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm test -- --watch",
     "build": "webpack",
     "start": "webpack-dev-server"
@@ -22,7 +22,10 @@
     "enzyme": "^2.1.0",
     "expect": "^1.15.2",
     "mocha": "^2.4.5",
+    "node-sass": "^3.4.2",
+    "postcss-loader": "^0.8.2",
     "react-addons-test-utils": "^0.14.7",
+    "sass-loader": "^3.2.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
