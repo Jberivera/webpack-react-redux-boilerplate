@@ -39,7 +39,6 @@ module.exports = merge(common, {
   start: {
     devtool: 'eval-source-map',
     devServer: {
-      contentBase: PATHS.build,
       historyApiFallback: true,
       hot: true,
       inline: true,
