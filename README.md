@@ -16,6 +16,19 @@ Open you project in the terminal and run `npm install`
 - `npm test`
 - `npm test:watch`
 
+## Technologies
+
+- [React](https://facebook.github.io/react/)
+- [Redux](https://github.com/reactjs/redux)
+- [Sass](http://sass-lang.com/)
+
+## Tools
+
+- [Webpack](https://webpack.github.io/)
+- [Babel](https://babeljs.io/)
+- [Mocha](https://mochajs.org/) + [Expect](https://github.com/mjackson/expect) + [Enzyme](https://github.com/airbnb/enzyme)
+- [Karma](https://karma-runner.github.io/) + [Phantomjs](http://phantomjs.org/)
+
 ## Architecture
 
 ### Application Structure
