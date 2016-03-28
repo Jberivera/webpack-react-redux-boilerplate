@@ -54,7 +54,7 @@ module.exports = function(config) {
         loaders: [
           {
             test: /\.scss$/,
-            loader: 'null'
+            loader: 'style!css?sourceMap&modules!postcss!sass?sourceMap'
           },
           {
             test: /\.js$/, exclude: /(bower_components|node_modules)/,
