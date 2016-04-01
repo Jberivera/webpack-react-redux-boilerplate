@@ -4,6 +4,7 @@ Fast way to start to apply react with redux using webpack
 
 [![Build Status](https://travis-ci.org/Jberivera/webpack-react-redux-boilerplate.svg?branch=master)](https://travis-ci.org/Jberivera/webpack-react-redux-boilerplate)
 [![Dependency Status](https://david-dm.org/jberivera/webpack-react-redux-boilerplate.svg)](https://david-dm.org/jberivera/webpack-react-redux-boilerplate)
+[![devDependency Status](https://david-dm.org/jberivera/webpack-react-redux-boilerplate/dev-status.svg)](https://david-dm.org/jberivera/webpack-react-redux-boilerplate#info=devDependencies)
 
 ## Getting Started
 
