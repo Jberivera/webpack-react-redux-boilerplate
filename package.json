@@ -9,7 +9,12 @@
     "build": "webpack",
     "start": "webpack-dev-server"
   },
-  "keywords": ["boilerplate", "webpack", "react", "redux"],
+  "keywords": [
+    "boilerplate",
+    "webpack",
+    "react",
+    "redux"
+  ],
   "author": "jberivera",
   "license": "MIT",
   "devDependencies": {
@@ -40,9 +45,10 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.10.0"
+    "webpack-merge": "^0.12.0"
   },
   "dependencies": {
+    "classnames": "^2.2.3",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "react-redux": "^4.4.1",
