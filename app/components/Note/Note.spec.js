@@ -1,5 +1,5 @@
 import React from 'react';
-import Note from './Note';
+import { Note } from './Note';
 import expect, { createSpy } from 'expect';
 import { shallow } from 'enzyme';
 
