@@ -12,7 +12,7 @@ describe('<Note />', () => {
   it('simulates click events', () => {
     const onButtonClick = createSpy();
     const wrapper = shallow(
-      <Note onClick={onButtonClick} />
+      <Note increment={onButtonClick} />
     );
     wrapper.find('h1').simulate('click');
     expect(onButtonClick).toHaveBeenCalled();
