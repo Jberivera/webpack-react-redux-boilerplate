@@ -16,12 +16,18 @@ const reducer = combineReducers(Object.assign({}, reducers, {
   routing: routerReducer
 }));
 
+const middlewares = [
+  thunk
+];
+
+if (process.env.NODE_ENV === 'development') {
+  const createLogger = require('redux-logger');
+  middlewares.push(createLogger());
+}
+
 const store = createStore(
   reducer,
-  applyMiddleware(
-    thunk,
-    createLogger()
-  )
+  applyMiddleware(...middlewares)
 );
 
 const history = syncHistoryWithStore(browserHistory, store);
@@ -30,9 +36,9 @@ const history = syncHistoryWithStore(browserHistory, store);
 import { Note } from './components';
 
 const App = (props) => (
-  <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={Note}>
+  <Provider store={ store }>
+    <Router history={ history }>
+      <Route path="/" component={ Note }>
       </Route>
     </Router>
   </Provider>
