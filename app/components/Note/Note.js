@@ -28,7 +28,7 @@ class Note extends Component {
 
     return (
       <div>
-        <h1 className={css('count')} onClick={ this.onClickHandler }>
+        <h1 className={ css('count') } onClick={ this.onClickHandler }>
           Ready for start to apply react, redux using webpack { count }
         </h1>
       </div>
