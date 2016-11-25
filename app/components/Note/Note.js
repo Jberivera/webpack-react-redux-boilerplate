@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import style from './Note.scss';
 import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
@@ -10,14 +10,30 @@ import {
   increment
 } from '../../actions/action-creators';
 
-const Note = ({ count, increment }) => {
-  return (
-    <h1 className={css('count')} onClick={(e) => {
-      increment();
-    }}>
-      Ready for start to apply react, redux using webpack { count }
-    </h1>
-  );
+class Note extends Component {
+  constructor (props) {
+    super(props);
+
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+
+  onClickHandler (e) {
+    const { increment } = this.props;
+
+    increment();
+  }
+
+  render () {
+    const { count } = this.props;
+
+    return (
+      <div>
+        <h1 className={css('count')} onClick={ this.onClickHandler }>
+          Ready for start to apply react, redux using webpack { count }
+        </h1>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
