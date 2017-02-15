@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const path = require('path');
 
@@ -7,74 +6,50 @@ const TARGET = process.env.npm_lifecycle_event;
 const DEFAULT_PORT = process.env.PORT || 3000;
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'dist')
+  dist: path.join(__dirname, 'dist'),
+  build: path.join(__dirname, 'build')
 };
 
 const common = {
   entry: PATHS.app,
   output: {
-    path: PATHS.build,
+    path: PATHS.dist,
     filename: 'js/main.js',
     publicPath: '/dist/'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.scss$/,
-        loader: 'style!css?sourceMap&modules!postcss!sass?sourceMap',
+        use: [
+          'style-loader',
+          'css-loader?sourceMap&modules',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  require('postcss-flexbugs-fixes'),
+                  require('autoprefixer')({ browsers: ['last 2 versions'] })
+                ];
+              }
+            }
+          },
+          'sass-loader?sourceMap'
+        ],
         include: PATHS.app
       },
       {
         test: /\.js$/,
-        loaders: ['babel?cacheDirectory'],
+        loader: 'babel-loader?cacheDirectory',
         include: PATHS.app
       }
     ]
-  },
-  postcss: function () {
-    return [
-      require('postcss-flexbugs-fixes'),
-      require('autoprefixer')({ browsers: ['last 2 versions'] })
-    ];
   }
 };
 
-module.exports = Object.assign(common, {
-  start: {
-    devtool: 'eval-source-map',
-    devServer: {
-      historyApiFallback: true,
-      hot: true,
-      inline: true,
-      progress: true,
-      stats: 'errors-only',
-      host: process.env.HOST,
-      port: process.env.PORT || DEFAULT_PORT
-    },
-    plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': '"development"' }})
-    ]
-  },
-  build: {
-    module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          loaders: ['babel?cacheDirectory'],
-          include: PATHS.app
-        },
-        {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract('style!css?modules!postcss!sass', 'css?modules!postcss!sass'),
-          include: PATHS.app
-        }
-      ]
-    },
-    plugins: [
-      new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': '"production"' }}),
-      new ExtractTextPlugin('css/[name].css?[hash]-[chunkhash]-[contenthash]-[name]', { allChunks: true }),
-      new webpack.optimize.UglifyJsPlugin()
-    ]
-  }
-}[TARGET]);
+const targetConfig = require(`./webpack.config.${TARGET}`)(PATHS, DEFAULT_PORT);
+
+const webpackConfig =  Object.assign(common, targetConfig);
+
+module.exports = webpackConfig;

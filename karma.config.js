@@ -40,25 +40,25 @@ module.exports = function(config) {
         noParse: [
           /node_modules\/sinon\//
         ],
-        preLoaders: [
+        rules: [
           {
             test: /(\.jsx)|(\.js)$/,
+            enforce: 'pre',
             exclude: /(tests|node_modules|bower_components)\//,
             loader: 'isparta-loader'
           },
           {
-            test: /\.json$/,
-            loader: 'json'
-          }
-        ],
-        loaders: [
-          {
             test: /\.scss$/,
-            loader: 'style!css?modules!sass'
+            use: [
+              'style-loader',
+              'css-loader?modules',
+              'sass-loader'
+            ]
           },
           {
-            test: /\.js$/, exclude: /(bower_components|node_modules)/,
-            loader: 'babel'
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: /(bower_components|node_modules)/
           }
         ]
       },
